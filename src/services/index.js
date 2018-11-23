@@ -1,3 +1,4 @@
+import { getAllUsers } from './users'
 console.log('Services')
 
 /*
@@ -5,3 +6,5 @@ console.log('Services')
   pela comunicação com o DB.
   Conhecido como CRUD rs
 */
+
+exports.getAllUsers = getAllUsers

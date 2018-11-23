@@ -1,6 +1,8 @@
-console.log('database')
+import Knex from 'knex'
+import databaseConfig from './knexfile.js'
 
-/*
-  Nesse diretório vamos ter tudo relacionado ao DB,
-  desde as migrations, até as conexões e etc...
-*/
+const knex = Knex(databaseConfig)
+
+knex.migrate.latest()
+
+export default knex

@@ -2,13 +2,12 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import { UsersController } from './controllers'
+import './database'
 
 const app = express()
 
 app.use(bodyParser.json())
 app.use(morgan('dev'))
-// por enquanto deixamos aqui, depois organizamos isso
-require('./services/')
 
 app.use('/users', UsersController)
 
