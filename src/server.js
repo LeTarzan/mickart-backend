@@ -1,21 +1,21 @@
-import Hapi from 'hapi'
+import express from 'express'
+import bodyParser from 'body-parser'
+import morgan from 'morgan'
+import { UsersController } from './controllers'
 
-const server = Hapi.Server({ port: 5555 })
+const app = express()
 
+app.use(bodyParser.json())
+app.use(morgan('dev'))
 // por enquanto deixamos aqui, depois organizamos isso
 require('./services/')
-require('./controllers/')
 
-const init = async () => {
-  server.route({
-    method: 'GET',
-    path: '/',
-    handler: (req, h) => ({ message: 'Hello Hapi.js' })
-  })
+app.use('/users', UsersController)
 
-  await server.start()
+app.get('/', (req, res) => {
+  res.json({ msg: 'Bem-vindo!' })
+})
 
-  console.log('Server is running')
-}
-
-init()
+app.listen(3000, error => {
+  console.log('error ', error)
+})

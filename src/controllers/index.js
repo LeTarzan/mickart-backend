@@ -1,3 +1,4 @@
+import UsersController from './users'
 console.log('Controllers')
 
 /*
@@ -12,3 +13,5 @@ console.log('Controllers')
   (Eu não gosto, mas desse jeito também é mais fácil de criar uma função para
     importar automaticamente todos... é como se fizesse um for nas pastas e ir importando todos)
  */
+
+exports.UsersController = UsersController

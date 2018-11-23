@@ -5,12 +5,9 @@
   "repository": "https://letarzan@bitbucket.org/dev_metal/backend.git",
   "license": "MIT",
   "dependencies": {
-    "boom": "^7.2.2",
-    "hapi": "^17.7.0",
-    "hapi-auth-jwt2": "^8.1.0",
-    "inert": "^5.1.2",
-    "joi": "^14.1.0",
-    "vision": "^5.4.3"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
@@ -31,7 +28,7 @@
     "prettier": "^1.15.2"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node src/server.js",
+    "start": "nodemon --exec babel-node src/server.js --ignore node_modules dist",
     "lint": "eslint src --color",
     "build": "babel src --out-dir dist --ignore node_modules",
     "p": "prettier --write src/**/*.js",
