@@ -10,7 +10,7 @@ exports.up = function(knex) {
             .inTable('typePayment')
         })
         .then(res => {
-          console.log('criada a tabela payments ', res)
+          console.log('criada a tabela payments', res)
         })
         .catch(console.error)
     }

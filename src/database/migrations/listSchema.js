@@ -12,7 +12,7 @@ exports.up = function(knex) {
           table.string('amount')
         })
         .then(res => {
-          console.log('criada a tabela list ', res)
+          console.log('criada a tabela list', res)
         })
         .catch(console.error)
     }

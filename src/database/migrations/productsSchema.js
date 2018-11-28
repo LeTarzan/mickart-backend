@@ -11,7 +11,7 @@ exports.up = function(knex) {
           table.timestamps(true, true)
         })
         .then(res => {
-          console.log('criada a tabela products ', res)
+          console.log('criada a tabela products', res)
         })
         .catch(console.error)
     }

@@ -20,7 +20,7 @@ exports.up = function(knex) {
           table.timestamps(true, true)
         })
         .then(res => {
-          console.log('criada a tabela sells ', res)
+          console.log('criada a tabela sells', res)
         })
         .catch(console.error)
     }
