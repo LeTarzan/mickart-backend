@@ -1,15 +1,13 @@
 const directory = require('path').resolve(__dirname, 'migrations')
-
+require('dotenv').config()
 module.exports = {
   client: 'pg',
   connection: {
-    host: process.env.DEV
-      ? '127.0.0.1'
-      : `${process.env.INSTANCE_CONNECTION_NAME}`,
-    port: 5433,
-    user: process.env.DEV ? 'postgres' : `${process.env.SQL_USER}`,
-    password: process.env.DEV ? 'root' : `${process.env.SQL_PASSWORD}`,
-    database: process.env.DEV ? 'mickarte' : `${process.env.SQL_DATABASE}`
+    host: process.env.INSTANCE_CONNECTION_NAME || '127.0.0.1',
+    port: 5432,
+    user: process.env.SQL_USER || 'postgres',
+    password: process.env.SQL_PASSWORD || 'root',
+    database: process.env.SQL_DATABASE || 'mickarte'
   },
   pool: { min: 1, max: 100 },
   migrations: {
