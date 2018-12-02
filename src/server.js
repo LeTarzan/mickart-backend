@@ -1,4 +1,3 @@
-
 import express from 'express'
 import bodyParser from 'body-parser'
 import morgan from 'morgan'
@@ -17,5 +16,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(3000, error => {
-  console.log('error ', error)
+  error && console.log('error ', error)
 })

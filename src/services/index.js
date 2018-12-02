@@ -1,4 +1,4 @@
-import { getAllUsers } from './users'
+import { getAllUsers, insertUser } from './users'
 console.log('Services')
 
 /*
@@ -8,3 +8,4 @@ console.log('Services')
 */
 
 exports.getAllUsers = getAllUsers
+exports.insertUser = insertUser
