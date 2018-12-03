@@ -9,8 +9,13 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  let result = await insertUser(req)
-  res.json({ msg: 'Rota do Users', data: result })
+  console.log('req', req.body)
+  try {
+    let result = await insertUser(req.body)
+    res.json({ msg: 'Rota do Users', data: result })
+  } catch (error) {
+    console.log('error ', error)
+  }
 })
 
 export default router
