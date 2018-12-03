@@ -8,6 +8,8 @@ exports.up = function(knex) {
           table.string('password')
           table.string('name')
           table.timestamps(true, true)
+          table.boolean('status').defaultTo(true)
+          // table.timestamps('deleted_at').defaultTo(null)
         })
         .then(res => {
           console.log('criada a tabela de users ', res)
