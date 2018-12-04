@@ -1,4 +1,5 @@
 import UsersController from './users'
+import ProductsController from './products'
 console.log('Controllers')
 
 /*
@@ -15,3 +16,4 @@ console.log('Controllers')
  */
 
 exports.UsersController = UsersController
+exports.ProductsController = ProductsController

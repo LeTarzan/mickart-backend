@@ -1,4 +1,5 @@
 import express from 'express'
+// eslint-disable-next-line prettier/prettier
 import { getAllUsers, insertUser, updateUser, getUser, deleteUser } from '../../services/'
 const router = express.Router()
 
@@ -9,7 +10,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-  try{
+  try {
     let result = await getUser(req.params)
     res.json({ msg: 'Rota do Users', data: result })
   } catch (error) {
@@ -37,8 +38,8 @@ router.put('/', async (req, res) => {
   }
 })
 
-router.delete('/:id', async (req, res) =>{
-  try{
+router.delete('/:id', async (req, res) => {
+  try {
     let result = await deleteUser(req.params)
     res.json({ msg: 'Rota do Users', data: result })
   } catch (error) {

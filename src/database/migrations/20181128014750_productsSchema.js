@@ -9,6 +9,8 @@ exports.up = function(knex) {
           table.string('color')
           table.decimal('size_available')
           table.timestamps(true, true)
+          table.boolean('status').defaultTo(true)
+          table.timestamps('deactivated_at')
         })
         .then(res => {
           console.log('criada a tabela products', res)

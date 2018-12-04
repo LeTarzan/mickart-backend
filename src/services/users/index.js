@@ -14,7 +14,7 @@ export function getUser(data) {
 
 export function insertUser(data) {
   console.log('data = ', data)
-  return knex('users').insert({ ...data })
+  return knex('users').insert({ data })
 }
 
 export function updateUser(data) {
@@ -22,12 +22,12 @@ export function updateUser(data) {
   return knex('users')
     .update(data)
     .where('id', data.id)
-    .whereNot('status', false)
 }
 
-export function deleteUser(data){
+export function deleteUser(data) {
   console.log('data = ', data)
+  let datetime = new Date()
   return knex('users')
-    .update({status: false})
+    .update({ status: false, deactivated_at: datetime })
     .where('id', data.id)
 }

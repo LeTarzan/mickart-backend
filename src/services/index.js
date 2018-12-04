@@ -1,4 +1,17 @@
-import { getAllUsers, insertUser, updateUser, getUser, deleteUser } from './users'
+import {
+  getAllUsers,
+  insertUser,
+  updateUser,
+  getUser,
+  deleteUser
+} from './users'
+import {
+  getAllProducts,
+  getProduct,
+  insertProduct,
+  updateProduct,
+  deleteProduct
+} from './products'
 console.log('Services')
 
 /*
@@ -12,3 +25,8 @@ exports.insertUser = insertUser
 exports.updateUser = updateUser
 exports.getUser = getUser
 exports.deleteUser = deleteUser
+exports.getAllProducts = getAllProducts
+exports.getProduct = getProduct
+exports.insertProduct = insertProduct
+exports.updateProduct = updateProduct
+exports.deleteProduct = deleteProduct
