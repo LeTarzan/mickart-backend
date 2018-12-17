@@ -1,10 +1,10 @@
-import Knex from 'knex'
-import databaseConfig from './knexfile.js'
+const Knex = require('knex')
+const databaseConfig = require('./knexfile.js')
 
-const knex = Knex(databaseConfig)
+const knexx = Knex(databaseConfig)
 
-knex('users').then(resu => console.log('users', resu))
+knexx('users').then(resu => console.log('users', resu))
 
-knex.migrate.latest()
+knexx.migrate.latest()
 
-export default knex
+module.exports = knexx

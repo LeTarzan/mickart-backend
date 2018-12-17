@@ -1,8 +1,9 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import morgan from 'morgan'
-import { UsersController, ProductsController } from './controllers'
-import './database'
+const express = require('express')
+const bodyParser = require('body-parser')
+const morgan = require('morgan')
+const UsersController = require('./controllers/users')
+const ProductsController = require('./controllers/products')
+require('./database')
 
 const app = express()
 

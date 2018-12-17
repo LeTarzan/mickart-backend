@@ -1,6 +1,11 @@
-import express from 'express'
+const express = require('express')
 // eslint-disable-next-line prettier/prettier
-import { getAllUsers, insertUser, updateUser, getUser, deleteUser } from '../../services/'
+const getAllUsers = require('../../services/')
+const insertUser = require('../../services/')
+const updateUser = require('../../services/')
+const getUser = require('../../services/')
+const deleteUser = require('../../services/')
+
 const router = express.Router()
 
 router.get('/', async (req, res) => {
@@ -47,4 +52,4 @@ router.delete('/:id', async (req, res) => {
   }
 })
 
-export default router
+module.exports = router

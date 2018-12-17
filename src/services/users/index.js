@@ -1,10 +1,10 @@
-import knex from '../../database'
+const knex = require('../../database')
 
-export function getAllUsers() {
+const getAllUsers = function() {
   return knex('users').whereNot('status', false)
 }
 
-export function getUser(data) {
+const getUser = function(data) {
   console.log('data = ', data)
   return knex('users')
     .select()
@@ -12,22 +12,28 @@ export function getUser(data) {
     .whereNot('status', false)
 }
 
-export function insertUser(data) {
+const insertUser = function(data) {
   console.log('data = ', data)
   return knex('users').insert({ data })
 }
 
-export function updateUser(data) {
+const updateUser = function(data) {
   console.log('data = ', data)
   return knex('users')
     .update(data)
     .where('id', data.id)
 }
 
-export function deleteUser(data) {
+const deleteUser = function(data) {
   console.log('data = ', data)
   let datetime = new Date()
   return knex('users')
     .update({ status: false, deactivated_at: datetime })
     .where('id', data.id)
 }
+
+exports.getAllUsers = getAllUsers
+exports.getUser = getUser
+exports.insertUser = insertUser
+exports.updateUser = updateUser
+exports.deleteUser = deleteUser

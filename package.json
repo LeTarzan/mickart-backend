@@ -5,6 +5,7 @@
   "repository": "https://letarzan@bitbucket.org/dev_metal/backend.git",
   "license": "MIT",
   "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
     "body-parser": "^1.18.3",
     "cross-env": "^5.2.0",
     "dotenv": "^6.1.0",
@@ -15,11 +16,6 @@
     "pg": "^7.6.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.5",
-    "@babel/core": "^7.1.6",
-    "@babel/node": "^7.0.0",
-    "@babel/preset-env": "^7.1.6",
-    "babel-preset-env": "^1.7.0",
     "eslint": "^5.9.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-config-standard": "^12.0.0",
@@ -35,7 +31,7 @@
     "webpack-dev-server": "2.2.0"
   },
   "scripts": {
-    "start": "cross-env DEV=true nodemon --exec babel-node src/server.js --ignore node_modules dist",
+    "start": "cross-env DEV=true babel-node src/server.js",
     "lint": "eslint src --color",
     "build": "babel src --out-dir dist --ignore node_modules",
     "p": "prettier --write src/**/*.js",

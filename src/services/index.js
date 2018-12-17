@@ -1,17 +1,15 @@
-import {
-  getAllUsers,
-  insertUser,
-  updateUser,
-  getUser,
-  deleteUser
-} from './users'
-import {
-  getAllProducts,
-  getProduct,
-  insertProduct,
-  updateProduct,
-  deleteProduct
-} from './products'
+const getAllUsers = require('./users')
+const insertUser = require('./users')
+const updateUser = require('./users')
+const getUser = require('./users')
+const deleteUser = require('./users')
+
+const getAllProducts = require('./products')
+const getProduct = require('./products')
+const insertProduct = require('./products')
+const updateProduct = require('./products')
+const deleteProduct = require('./products')
+
 console.log('Services')
 
 /*

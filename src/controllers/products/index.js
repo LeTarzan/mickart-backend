@@ -1,11 +1,15 @@
 /* eslint-disable prettier/prettier */
-import express from 'express'
-import { getAllProducts, getProduct, insertProduct, updateProduct, deleteProduct } from '../../services'
+const express = require('express')
+const getAllProducts = require('../../services')
+const getProduct = require('../../services')
+const insertProduct = require('../../services')
+const updateProduct = require('../../services')
+const deleteProduct = require('../../services')
 
 const router = express.Router()
 
-router.get('/', async (req, res) =>{
-    try{
+router.get('/', async (req, res) => {
+    try {
         let result = await getAllProducts()
         res.json({ msg: 'Rota de products', data: result })
     } catch (error) {
@@ -16,7 +20,7 @@ router.get('/', async (req, res) =>{
 router.get('/:id', async (req, res) => {
     try {
         let result = await getProduct(req.params)
-        res.json({ msg: 'Rota do products', data: result})
+        res.json({ msg: 'Rota do products', data: result })
     } catch (error) {
         console.log('error ', error)
     }
@@ -43,10 +47,10 @@ router.put('/', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         let result = await deleteProduct(req.params)
-        res.json({ msg: 'Rota de products', data: result})
+        res.json({ msg: 'Rota de products', data: result })
     } catch (error) {
         console.log('error ', error)
     }
 })
 
-export default router
+module.exports = router
