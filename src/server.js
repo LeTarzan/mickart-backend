@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const UsersController = require('./controllers/users')
 const ProductsController = require('./controllers/products')
+
 require('./database')
 
 const app = express()

@@ -31,7 +31,7 @@
     "webpack-dev-server": "2.2.0"
   },
   "scripts": {
-    "start": "cross-env DEV=true babel-node src/server.js",
+    "start": "cross-env DEV=true node src/server.js",
     "lint": "eslint src --color",
     "build": "babel src --out-dir dist --ignore node_modules",
     "p": "prettier --write src/**/*.js",

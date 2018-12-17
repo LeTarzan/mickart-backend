@@ -9,7 +9,7 @@ exports.up = function(knex) {
           table.string('name')
           table.timestamps(true, true)
           table.boolean('status').defaultTo(true)
-          table.timestamps('deactivated_at')
+          table.datetime('deactivated_at')
         })
         .then(res => {
           console.log('criada a tabela de users ', res)
