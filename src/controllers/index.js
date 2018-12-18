@@ -1,5 +1,6 @@
 const UsersController = require('./users')
 const ProductsController = require('./products')
+const TypePaymentController = require('./typePayment')
 console.log('Controllers')
 
 /*
@@ -17,3 +18,4 @@ console.log('Controllers')
 
 exports.UsersController = UsersController
 exports.ProductsController = ProductsController
+exports.TypePaymentController = TypePaymentController

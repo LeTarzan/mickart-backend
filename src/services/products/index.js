@@ -16,7 +16,7 @@ const getProduct = function(data){
 const insertProduct = function(data){
     console.log('data = ', data)
     return knex('products')
-      .insert({ data })
+      .insert(data)
 }
 
 const updateProduct = function(data){

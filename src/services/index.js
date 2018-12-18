@@ -1,15 +1,3 @@
-// const getAllUsers = require('./users')
-// const insertUser = require('./users')
-// const updateUser = require('./users')
-// const getUser = require('./users')
-// const deleteUser = require('./users')
-
-// const getAllProducts = require('./products')
-// const getProduct = require('./products')
-// const insertProduct = require('./products')
-// const updateProduct = require('./products')
-// const deleteProduct = require('./products')
-
 const {
   getAllUsers,
   getUser,
@@ -26,6 +14,14 @@ const {
   deleteProduct
 } = require('./products')
 
+const {
+  getAllTypeOfPayment,
+  getTypeOfPayment,
+  insertTypeOfPayment,
+  updateTypeOfPayment,
+  deleteTypeOfPayment
+} = require('./typePayment')
+
 console.log('Services')
 
 /*
@@ -33,12 +29,18 @@ console.log('Services')
   pela comunicação com o DB.
   Conhecido como CRUD rs
 */
+exports.getAllTypeOfPayment = getAllTypeOfPayment
+exports.getTypeOfPayment = getTypeOfPayment
+exports.insertTypeOfPayment = insertTypeOfPayment
+exports.updateTypeOfPayment = updateTypeOfPayment
+exports.deleteTypeOfPayment = deleteTypeOfPayment
 
 exports.getAllUsers = getAllUsers
 exports.insertUser = insertUser
 exports.updateUser = updateUser
 exports.getUser = getUser
 exports.deleteUser = deleteUser
+
 exports.getAllProducts = getAllProducts
 exports.getProduct = getProduct
 exports.insertProduct = insertProduct
