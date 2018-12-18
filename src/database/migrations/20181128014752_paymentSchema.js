@@ -4,7 +4,8 @@ exports.up = function(knex) {
       return knex.schema
         .createTable('payments', table => {
           table.increments('id').primary()
-          table.integer('payment_type_id').references('payments.id')
+          table.integer('sell_id').references('sells.id')
+          table.integer('typePayment_id').references('typePayment.id')
           table.timestamps(true, true)
         })
         .then(res => {

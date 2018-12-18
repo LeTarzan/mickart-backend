@@ -11,33 +11,53 @@ const {
 } = require('../../services')
 
 router.get('/', async (req, res) => {
-    console.log('rota raiz do TypeOfPayment')
-    let result = await getAllTypeOfPayment()
-    res.json({ msg: 'Rota de TypeOfPayment', data: result })
+    try {
+        console.log('rota raiz do TypeOfPayment')
+        let result = await getAllTypeOfPayment()
+        res.json({ msg: 'Rota de TypeOfPayment', data: result })
+    } catch (error) {
+        console.log('error ', error)
+    }
 })
 
 router.get('/:id', async(req, res) => {
-    console.log('rota raiz do TypeOfPayment')
-    let result = await getTypeOfPayment(req.params)
-    res.json({ msg: 'Rota de TypeOfPayment', data: result})    
+    try {
+        console.log('rota raiz do TypeOfPayment')
+        let result = await getTypeOfPayment(req.params)
+        res.json({ msg: 'Rota de TypeOfPayment', data: result})    
+    } catch (error) {
+        console.log('error ', error)        
+    }
 })
 
 router.post('/', async (req, res) => {
-    console.log('rota raiz do TypeOfPayment')
-    let result = await insertTypeOfPayment(req.body)
-    res.json({ msg: 'Rota de TypeOfPayment', data: result })
+    try {
+        console.log('rota raiz do TypeOfPayment')
+        let result = await insertTypeOfPayment(req.body)
+        res.json({ msg: 'Rota de TypeOfPayment', data: result })
+    } catch (error) {
+        console.log('error ', error)        
+    }
 })
 
 router.put('/', async (req, res) => {
-    console.log('rota raiz de TypeOfPayment')
-    let result = await updateTypeOfPayment(req.body)
-    res.json({ msg: 'Rota de TypeOfPayment', data: result })
+    try {
+        console.log('rota raiz de TypeOfPayment')
+        let result = await updateTypeOfPayment(req.body)
+        res.json({ msg: 'Rota de TypeOfPayment', data: result })
+    } catch (error) {
+        console.log('error ', error)        
+    }
 })
 
 router.delete('/:id', async (req, res) => {
-    console.log('rota raiz de TypeOfPayment')
-    let result = await deleteTypeOfPayment(req.params)
-    res.json({ msg: 'Rota de TypeOfPayment', data: result})    
+    try {
+        console.log('rota raiz de TypeOfPayment')
+        let result = await deleteTypeOfPayment(req.params)
+        res.json({ msg: 'Rota de TypeOfPayment', data: result})    
+    } catch (error) {
+        console.log('error ', error)        
+    }
 })
 
 module.exports = router

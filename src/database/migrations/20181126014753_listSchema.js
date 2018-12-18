@@ -4,10 +4,11 @@ exports.up = function(knex) {
       return knex.schema
         .createTable('list', table => {
           table.increments('id').primary()
-          table.integer('product_id').references('products.id')
           table.integer('qtd')
           table.string('amount')
           table.timestamps(true, true)
+          table.boolean('status').defaultTo(true)
+          table.datetime('deactivated_at')
         })
         .then(res => {
           console.log('criada a tabela list', res)

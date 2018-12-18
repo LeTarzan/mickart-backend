@@ -6,6 +6,8 @@ exports.up = function(knex) {
           table.increments('id').primary()
           table.string('type')
           table.timestamps(true, true)
+          table.boolean('status').defaultTo(true)
+          table.datetime('deactivated_at')
         })
         .then(res => {
           console.log('criada a tabela typePayment', res)

@@ -4,6 +4,8 @@ const morgan = require('morgan')
 const UsersController = require('./controllers/users')
 const ProductsController = require('./controllers/products')
 const TypePaymentController = require('./controllers/typePayment')
+const ListController = require('./controllers/list')
+const SellsController = require('./controllers/sells')
 
 require('./database')
 
@@ -17,6 +19,10 @@ app.use('/users', UsersController)
 app.use('/products', ProductsController)
 
 app.use('/type-payment', TypePaymentController)
+
+app.use('/list', ListController)
+
+app.use('/sells', SellsController)
 
 // app.user('/sells')
 

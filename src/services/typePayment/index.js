@@ -9,6 +9,7 @@ const getTypeOfPayment = function(data) {
   return knex('typePayment')
     .select()
     .where('id', data.id)
+    .whereNot('status', false)
 }
 
 const insertTypeOfPayment = function(data) {
@@ -20,6 +21,7 @@ const updateTypeOfPayment = function(data){
     return knex('typePayment')
       .update(data)
       .where('id', data.id)
+      .whereNot('status', false)
 }
 
 const deleteTypeOfPayment = function(data){

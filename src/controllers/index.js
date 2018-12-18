@@ -1,13 +1,15 @@
 const UsersController = require('./users')
 const ProductsController = require('./products')
 const TypePaymentController = require('./typePayment')
+const ListController = require('./list')
+const SellsController = require('./sells')
 console.log('Controllers')
 
 /*
   nessa pasta vão ficar os controllers, cada um dentro de sua respectiva pasta
   Exemplo:
   O controller de User vai ficar na pasta
-  src/controllers/user/index.js
+  src/controllers  /user/index.js
 
   Os arquivos ficam sempre dentro de pastas e em um index.js
   - Pq isso?
@@ -19,3 +21,5 @@ console.log('Controllers')
 exports.UsersController = UsersController
 exports.ProductsController = ProductsController
 exports.TypePaymentController = TypePaymentController
+exports.ListController = ListController
+exports.SellsController = SellsController
