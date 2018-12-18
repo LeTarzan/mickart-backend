@@ -1,9 +1,5 @@
 const knex = require('../../database')
 
-const getAllUsers = function() {
-  return knex('users').whereNot('status', false)
-}
-
 const getUser = function(data) {
   console.log('data = ', data)
   return knex('users')
@@ -30,6 +26,10 @@ const deleteUser = function(data) {
   return knex('users')
     .update({ status: false, deactivated_at: datetime })
     .where('id', data.id)
+}
+
+const getAllUsers = function() {
+  return knex('users').whereNot('status', false)
 }
 
 exports.getAllUsers = getAllUsers

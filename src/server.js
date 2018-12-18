@@ -15,6 +15,8 @@ app.use('/users', UsersController)
 
 app.use('/products', ProductsController)
 
+// app.user('/sells')
+
 app.get('/', (req, res) => {
   res.json({ msg: 'Bem-vindo!' })
 })

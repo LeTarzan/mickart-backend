@@ -1,10 +1,14 @@
 /* eslint-disable prettier/prettier */
+
+const {
+    getAllProducts,
+    getProduct,
+    insertProduct,
+    updateProduct,
+    deleteProduct
+} = require('../../services')
+
 const express = require('express')
-const getAllProducts = require('../../services')
-const getProduct = require('../../services')
-const insertProduct = require('../../services')
-const updateProduct = require('../../services')
-const deleteProduct = require('../../services')
 
 const router = express.Router()
 

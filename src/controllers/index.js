@@ -1,5 +1,4 @@
 const UsersController = require('./users')
-console.log('teste;;;;')
 const ProductsController = require('./products')
 console.log('Controllers')
 

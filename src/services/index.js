@@ -1,14 +1,30 @@
-const getAllUsers = require('./users')
-const insertUser = require('./users')
-const updateUser = require('./users')
-const getUser = require('./users')
-const deleteUser = require('./users')
+// const getAllUsers = require('./users')
+// const insertUser = require('./users')
+// const updateUser = require('./users')
+// const getUser = require('./users')
+// const deleteUser = require('./users')
 
-const getAllProducts = require('./products')
-const getProduct = require('./products')
-const insertProduct = require('./products')
-const updateProduct = require('./products')
-const deleteProduct = require('./products')
+// const getAllProducts = require('./products')
+// const getProduct = require('./products')
+// const insertProduct = require('./products')
+// const updateProduct = require('./products')
+// const deleteProduct = require('./products')
+
+const {
+  getAllUsers,
+  getUser,
+  insertUser,
+  updateUser,
+  deleteUser
+} = require('./users')
+
+const {
+  getAllProducts,
+  insertProduct,
+  updateProduct,
+  getProduct,
+  deleteProduct
+} = require('./products')
 
 console.log('Services')
 

@@ -1,10 +1,12 @@
 const express = require('express')
 // eslint-disable-next-line prettier/prettier
-const getAllUsers = require('../../services/')
-const insertUser = require('../../services/')
-const updateUser = require('../../services/')
-const getUser = require('../../services/')
-const deleteUser = require('../../services/')
+const {
+  getAllUsers,
+  insertUser,
+  updateUser,
+  getUser,
+  deleteUser
+} = require('../../services')
 
 const router = express.Router()
 
