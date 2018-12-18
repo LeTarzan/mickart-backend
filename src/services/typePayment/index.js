@@ -19,7 +19,7 @@ const insertTypeOfPayment = function(data) {
 const updateTypeOfPayment = function(data){
     return knex('typePayment')
       .update(data)
-      .where('id', data)
+      .where('id', data.id)
 }
 
 const deleteTypeOfPayment = function(data){

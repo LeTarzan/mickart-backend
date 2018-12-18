@@ -36,7 +36,7 @@ router.put('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     console.log('rota raiz de TypeOfPayment')
-    let result = await deleteTypeOfPayment()
+    let result = await deleteTypeOfPayment(req.params)
     res.json({ msg: 'Rota de TypeOfPayment', data: result})    
 })
 
