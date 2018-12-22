@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
 
         let dados = req.body
         console.log('dados = ', dados)
-        let { amount, user_id } = dados.sell
+        let { user_id } = dados.sell
         let sellAmount = await dados.list.reduce((prev, curr) => {
             console.log('prev', prev)
             console.log('curr', curr)
