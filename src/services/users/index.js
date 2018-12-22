@@ -10,13 +10,13 @@ const getUser = function(data) {
 
 const insertUser = function(data) {
   console.log('data = ', data)
-  return knex('users').insert({ data })
+  return knex('users').insert({ ...data }, 'id')
 }
 
 const updateUser = function(data) {
   console.log('data = ', data)
   return knex('users')
-    .update(data)
+    .update({ data })
     .where('id', data.id)
 }
 

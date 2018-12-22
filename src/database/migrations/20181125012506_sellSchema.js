@@ -4,7 +4,8 @@ exports.up = function(knex) {
       return knex.schema
         .createTable('sells', table => {
           table.increments('id').primary()
-          table.string('amount')
+          table.decimal('amount')
+          table.datetime('date_delivery')
           table.timestamps(true, true)
         })
         .then(res => {

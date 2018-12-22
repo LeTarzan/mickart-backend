@@ -38,6 +38,14 @@ const {
   deleteSell
 } = require('./sells')
 
+const {
+  getAllPayment,
+  getPayment,
+  insertPayment,
+  updatePayment,
+  deletePayment
+} = require('./payment')
+
 console.log('Services')
 
 /*
@@ -75,3 +83,9 @@ exports.getSell = getSell
 exports.insertSell = insertSell
 exports.updateSell = updateSell
 exports.deleteSell = deleteSell
+
+exports.getAllPayment = getAllPayment
+exports.getPayment = getPayment
+exports.insertPayment = insertPayment
+exports.updatePayment = updatePayment
+exports.deletePayment = deletePayment

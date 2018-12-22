@@ -15,7 +15,7 @@ const getList = function(data){
 
 const insertList = function(data){
     return knex('list')
-      .insert(data)
+      .insert(data, 'id')
 }
 
 const updateList = function(data){

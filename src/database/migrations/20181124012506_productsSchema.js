@@ -7,6 +7,7 @@ exports.up = function(knex) {
           table.string('name_prod')
           table.integer('qtd_stored')
           table.string('color')
+          table.decimal('value')
           table.decimal('size_available')
           table.timestamps(true, true)
           table.boolean('status').defaultTo(true)

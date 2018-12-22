@@ -7,7 +7,7 @@ exports.up = function (knex, Promise) {
                 .alterTable('sells', table => {
                     table.integer('user_id').references('users.id')
                     table.boolean('status').defaultTo(true)
-                    table.datetime('deactivated_at')
+                    table.date('deactivated_at')
                 })
                 .then(res => {
                     console.log('criada a tabela sells', res)

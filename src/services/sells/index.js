@@ -8,13 +8,16 @@ const getAllSells = function(){
 const getSell = function(data){
     return knex('sells')
       .select()
+      .innerJoin('users', 'users.id', 'sells.user_id')
+      .innerJoin('list', 'sells.id', 'list.sell_id')
+      .innerJoin('payments', 'sells.id', 'payments.sell_id')
       .where('id', data.id)
       .whereNot('status', false)
 }
 
 const insertSell = function(data){
     return knex('sells')
-      .insert(data)
+      .insert(data, 'id')
 }
 
 const updateSell = function(data){

@@ -5,7 +5,7 @@ exports.up = function(knex) {
         .createTable('list', table => {
           table.increments('id').primary()
           table.integer('qtd')
-          table.string('amount')
+          table.decimal('amount')
           table.timestamps(true, true)
           table.boolean('status').defaultTo(true)
           table.datetime('deactivated_at')
