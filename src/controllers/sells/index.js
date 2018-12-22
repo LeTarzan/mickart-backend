@@ -27,9 +27,9 @@ router.get('/:id', async(req, res) => {
     try {
         console.log('rota raiz do Sells')
         let result = await getSell(req.params)
-        res.json({ msg: 'Rota de Sells', data: result})    
+        res.json({ msg: 'Rota de Sells', data: result})
     } catch (error) {
-        console.log('error ', error)        
+        console.log('error ', error)
     }
 })
 
@@ -39,38 +39,34 @@ router.post('/', async (req, res) => {
         let result = {}
 
         let dados = req.body
-        let rs_sell_id = await insertSell(dados.sell)
-         
-        dados.list.forEach((item, index, dados) => {
-            item.sell_id = rs_sell_id
+        console.log('dados = ', dados)
+        let { amount, user_id } = dados.sell
+        let sellAmount = await dados.list.reduce((prev, curr) => {
+            console.log('prev', prev)
+            console.log('curr', curr)
+            return parseFloat(prev) + parseFloat(curr.amount)
+        }, 0)
+        console.log('sellAmount ', sellAmount)
+        let rsSellId = await insertSell({ amount: sellAmount, user_id })
+        rsSellId = rsSellId[0]
+
+        dados.list.map(item => {
+            item.sell_id = rsSellId
         });
-        
+        console.log('dadosList ', dados.list)
         let result_list = await insertList(dados.list)
-        dados.payment.sell_id = rs_sell_id
-        
-        dados.list.forEach((item, index, dados) => {
-            item.sell_id = rs_sell_id
-        })
-        
+        dados.payment.sell_id = rsSellId
+
         dados.payment.typePayment_id = parseInt(dados.payment.typePayment_id)
 
         let result_payment = await insertPayment(dados.payment)
 
-        let amount = 0
-
-        dados.list.forEach((item, index, dados) => {
-            amount += item.value
-        })
-
-        let result_update = await updateSell({ amount: amount })
-
         result.result_list = result_list
         result.result_payment = result_payment
-        result.result_update = result_update
 
         res.json({ msg: 'Rota de Sells', data: result })
     } catch (error) {
-        console.log('error ', error)        
+        console.log('error ', error)
     }
 })
 
@@ -80,7 +76,7 @@ router.put('/', async (req, res) => {
         let result = await updateSell(req.body)
         res.json({ msg: 'Rota de Sells', data: result })
     } catch (error) {
-        console.log('error ', error)        
+        console.log('error ', error)
     }
 })
 
@@ -88,9 +84,9 @@ router.delete('/:id', async (req, res) => {
     try {
         console.log('rota raiz de Sells')
         let result = await deleteSell(req.params)
-        res.json({ msg: 'Rota de Sells', data: result})    
+        res.json({ msg: 'Rota de Sells', data: result})
     } catch (error) {
-        console.log('error ', error)        
+        console.log('error ', error)
     }
 })
 

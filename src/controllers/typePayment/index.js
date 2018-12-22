@@ -24,9 +24,9 @@ router.get('/:id', async(req, res) => {
     try {
         console.log('rota raiz do TypeOfPayment')
         let result = await getTypeOfPayment(req.params)
-        res.json({ msg: 'Rota de TypeOfPayment', data: result})    
+        res.json({ msg: 'Rota de TypeOfPayment', data: result})
     } catch (error) {
-        console.log('error ', error)        
+        console.log('error ', error)
     }
 })
 
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
         let result = await insertTypeOfPayment(req.body)
         res.json({ msg: 'Rota de TypeOfPayment', data: result })
     } catch (error) {
-        console.log('error ', error)        
+        console.log('error ', error)
     }
 })
 
@@ -46,7 +46,7 @@ router.put('/', async (req, res) => {
         let result = await updateTypeOfPayment(req.body)
         res.json({ msg: 'Rota de TypeOfPayment', data: result })
     } catch (error) {
-        console.log('error ', error)        
+        console.log('error ', error)
     }
 })
 
@@ -54,9 +54,9 @@ router.delete('/:id', async (req, res) => {
     try {
         console.log('rota raiz de TypeOfPayment')
         let result = await deleteTypeOfPayment(req.params)
-        res.json({ msg: 'Rota de TypeOfPayment', data: result})    
+        res.json({ msg: 'Rota de TypeOfPayment', data: result})
     } catch (error) {
-        console.log('error ', error)        
+        console.log('error ', error)
     }
 })
 
