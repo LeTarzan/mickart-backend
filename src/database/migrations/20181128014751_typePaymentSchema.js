@@ -1,8 +1,8 @@
 exports.up = function(knex) {
-  return knex.schema.hasTable('typePayment').then(exists => {
+  return knex.schema.hasTable('type_payment').then(exists => {
     if (!exists) {
       return knex.schema
-        .createTable('typePayment', table => {
+        .createTable('type_payment', table => {
           table.increments('id').primary()
           table.string('type')
           table.timestamps(true, true)

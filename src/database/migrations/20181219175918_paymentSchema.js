@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 
 exports.up = function(knex, Promise) {
-    return knex.schema.hasTable('list').then(exists => {
+    return knex.schema.hasTable('payments').then(exists => {
         if (exists) {
           return knex.schema
             .alterTable('payments', table => {

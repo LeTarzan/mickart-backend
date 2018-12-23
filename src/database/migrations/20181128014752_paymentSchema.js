@@ -5,7 +5,7 @@ exports.up = function(knex) {
         .createTable('payments', table => {
           table.increments('id').primary()
           table.integer('sell_id').references('sells.id')
-          table.integer('typePayment_id').references('typePayment.id')
+          table.integer('type_payment_id').references('type_payment.id')
           table.timestamps(true, true)
         })
         .then(res => {
@@ -17,23 +17,3 @@ exports.up = function(knex) {
 }
 
 exports.down = function(knex) {}
-
-// {
-// 	"sell": {
-// 		"amount": 0.00,
-// 		"user_id": 1,
-// 		"date_delivery": "2018-12-22"
-// 	},
-// 	"list": [
-// 		{
-// 			"qtd": 2,
-// 			"amount": 24.99,
-// 			"product_id": 1
-// 		}
-// 	],
-// 	"payment": [
-// 		{
-// 			"typePayment_id": 1
-// 		}
-// 	]
-// }

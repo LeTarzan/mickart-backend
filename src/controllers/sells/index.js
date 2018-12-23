@@ -1,5 +1,5 @@
-/* eslint-disable camelcase */
 /* eslint-disable prettier/prettier */
+/* eslint-disable camelcase */
 const express = require('express')
 const router = express.Router()
 
@@ -44,11 +44,11 @@ router.post('/', async (req, res) => {
         let sellAmount = await dados.list.reduce((prev, curr) => {
             console.log('prev', prev)
             console.log('curr', curr)
-            return parseFloat(prev) + parseFloat(curr.amount)
+            return parseFloat(prev) + parseFloat(curr.amount * curr.qtd)
         }, 0)
         console.log('sellAmount ', sellAmount)
         let rsSellId = await insertSell({ amount: sellAmount, user_id })
-        rsSellId = rsSellId[0]
+        rsSellId = rsSellId[0]  
 
         dados.list.map(item => {
             item.sell_id = rsSellId
@@ -57,9 +57,8 @@ router.post('/', async (req, res) => {
         let result_list = await insertList(dados.list)
         dados.payment.sell_id = rsSellId
 
-        dados.payment.typePayment_id = parseInt(dados.payment.typePayment_id)
-
         let result_payment = await insertPayment(dados.payment)
+        console.log('resultado..', result_payment)
 
         result.result_list = result_list
         result.result_payment = result_payment
