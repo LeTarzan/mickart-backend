@@ -2,10 +2,12 @@
 const knex = require('../../database')
 const {
   insertList,
-  insertPayment,
-  updatePayment,
   updateList
-} = require('../index')
+} = require('../list')
+const {
+  insertPayment,
+  updatePayment
+} = require('../payment')
 
 const getAllSells = function () {
   return knex('sells').whereNot('status', false)
@@ -44,7 +46,7 @@ const getSell = function (data) {
 
 const insert = async data => knex('sells').insert(data, 'id')
 
-const insertSell = async function (dados) {
+const insertSell = async (dados) => {
   let result = {}
 
   console.log('dados = ', dados)
@@ -67,8 +69,8 @@ const insertSell = async function (dados) {
   return result
 }
 
-const update = data => {
-  knex('sells')
+const update = async data => {
+  return knex('sells')
     .update(data)
     .where('id', data.id)
     .whereNot('status', false)
@@ -78,8 +80,7 @@ const updateSell = async function (dados) {
   let result = {}
 
   let resultSell = await update(dados.sell)
-  console.log('updateList', updateList)
-  let resultList = await updateList(dados.list)
+  let resultList = await dados.list.map(async item => updateList(item))
   let resultPayment = await updatePayment(dados.payment)
 
   result.resultSell = resultSell

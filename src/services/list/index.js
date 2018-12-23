@@ -21,7 +21,7 @@ const insertList = function (data) {
 const updateList = function (data) {
   return knex('list')
     .update(data)
-    .where('sell_id', data.id)
+    .where('id', data.id)
     .whereNot('status', false)
 }
 
