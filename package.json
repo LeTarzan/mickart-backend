@@ -37,6 +37,7 @@
     "build": "babel src --out-dir dist --ignore node_modules",
     "p": "prettier --write src/**/*.js",
     "p:w": "onchange ./src/**/*.js -- prettier --write {{changed}}",
-    "test": "jest"
+    "test": "jest",
+    "drop-create-db": "node ./src/utils/dropCreateDB.js"
   }
 }
