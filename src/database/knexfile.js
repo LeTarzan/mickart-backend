@@ -1,4 +1,5 @@
-const directory = require('path').resolve(__dirname, 'migrations')
+const migrationsPath = require('path').resolve(__dirname, 'migrations')
+const seedsPath = require('path').resolve(__dirname, 'seeds')
 require('dotenv').config()
 module.exports = {
   client: 'pg',
@@ -11,6 +12,9 @@ module.exports = {
   },
   pool: { min: 1, max: 100 },
   migrations: {
-    directory: directory
+    directory: migrationsPath
+  },
+  seeds: {
+    directory: seedsPath
   }
 }
