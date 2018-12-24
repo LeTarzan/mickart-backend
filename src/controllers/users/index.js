@@ -28,14 +28,6 @@ router.get('/', async (req, res) => {
     res.json({ msg: 'Rota do Users', data: result })
   } catch (error) {
     console.log('error ..', error)
-
-    if (error.code === '23505') {
-      console.log('detail ..', error.detail)
-      if (error.detail.match(/email/)) {
-        res.json({ msg: 'Email já cadastrados!' })
-      }
-      res.json({ msg: 'Username já cadastrados!' })
-    }
   }
 })
 
@@ -55,6 +47,13 @@ router.post('/', async (req, res) => {
     res.json({ msg: 'Rota do Users', data: result })
   } catch (error) {
     console.log('error ', error)
+    if (error.code === '23505') {
+      console.log('detail ..', error.detail)
+      if (error.detail.match(/email/)) {
+        return res.status(409).json({ msg: 'Email já cadastrados!' })
+      }
+      res.status(409).json({ msg: 'Username já cadastrados!' })
+    }
   }
 })
 

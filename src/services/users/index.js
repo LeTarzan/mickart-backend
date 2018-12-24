@@ -38,7 +38,6 @@ const getUserProfile = function(data) {
 }
 
 const insert = function (data){
-  console.log('goiaba', data)
   return knex('users').insert({ ...data }, 'id')
 }
 
@@ -50,7 +49,7 @@ const insertUser = async function(data) {
     return true
   } catch (error) {
     console.log('error insertUser...', error)
-    return error
+    throw error
   }
 }
 
