@@ -3,24 +3,24 @@
 const knex = require('../../database')
 
 const getAllRole = function () {
-  return knex('Role').whereNot('status', false)
+  return knex('role').whereNot('status', false)
 }
 
 const getRole = function (data) {
-  return knex('Role')
+  return knex('role')
     .select()
     .where('id', data.id)
     .whereNot('status', false)
 }
 
 const insertRole = function (data) {
-  return knex('Role')
+  return knex('role')
     .insert(data, 'id')
 }
 
 const updateRole = function (data) {
   console.log('data = ', data)
-  return knex('Role')
+  return knex('role')
     .update(data)
     .where('id', data.id)
     .whereNot('status', false)
@@ -28,7 +28,7 @@ const updateRole = function (data) {
 
 const deleteRole = function (data) {
   let datetime = new Date()
-  return knex('Role')
+  return knex('role')
     .update({ status: false, deactivated_at: datetime })
     .where('id', data.id)
 }

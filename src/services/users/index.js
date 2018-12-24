@@ -34,7 +34,7 @@ const getUserProfile = function(data) {
   FROM users as u
   LEFT JOIN address as a ON u.id = a.user_id
   LEFT JOIN role as r ON r.id = u.role_id
-  WHERE u.id = ${data.id} AND u.status <> false`)
+  WHERE u.id = ${data.id} AND u.status <> false`).then(result => result.rows)
 }
 
 const insert = function (data){
@@ -50,7 +50,7 @@ const insertUser = async function(data) {
     return true
   } catch (error) {
     console.log('error insertUser...', error)
-    throw error
+    return error
   }
 }
 

@@ -10,7 +10,7 @@ exports.up = function(knex) {
           table.string('lastname').notNullable()
           table.string('username').unique().notNullable()
           table.string('comment')
-          table.integer('role_id').references('role.id').notNullable().defaultTo(1)
+          table.integer('role_id').references('role.id').notNullable().defaultTo(2)
           table.timestamps(true, true)
           table.boolean('status').defaultTo(true)
           table.datetime('deactivated_at')
