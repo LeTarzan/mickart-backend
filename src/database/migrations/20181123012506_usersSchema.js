@@ -8,7 +8,7 @@ exports.up = function(knex) {
           table.string('password').notNullable()
           table.string('name').notNullable()
           table.string('lastname').notNullable()
-          table.string('username').unique().notNullable()
+          table.string('username')
           table.string('comment')
           table.integer('role_id').references('role.id').notNullable().defaultTo(2)
           table.timestamps(true, true)
