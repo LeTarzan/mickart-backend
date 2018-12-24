@@ -38,6 +38,9 @@ const getUserProfile = function(data) {
 }
 
 const insert = function (data){
+  if (!data.username){
+    data.username = data.email.split('@')[0]
+  }
   return knex('users').insert({ ...data }, 'id')
 }
 
