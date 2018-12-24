@@ -6,7 +6,6 @@ exports.up = function(knex) {
           table.increments('id').primary()
           table.string('name')
           table.integer('qtd_stored')
-          table.string('color')
           table.decimal('value')
           table.decimal('size_available')
           table.timestamps(true, true)
