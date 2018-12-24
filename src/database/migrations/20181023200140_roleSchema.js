@@ -8,6 +8,7 @@ exports.up = function (knex, Promise) {
           table.string('type')
           table.boolean('status').defaultTo(true)
           table.datetime('deactivated_at')
+          table.timestamps(true, true)
         })
         .then(res => {
           console.log('criada a tabela de role ', res)

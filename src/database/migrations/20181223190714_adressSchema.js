@@ -14,6 +14,7 @@ exports.up = function (knex, Promise) {
           table.integer('user_id').references('users.id')
           table.boolean('status').defaultTo(true)
           table.datetime('deactivated_at')
+          table.timestamps(true, true)
         })
         .then(res => {
           console.log('criada a tabela de address ', res)

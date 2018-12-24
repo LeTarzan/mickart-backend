@@ -37,7 +37,8 @@ const getUserProfile = function(data) {
   WHERE u.id = ${data.id} AND u.status <> false`)
 }
 
-const insert = function (){
+const insert = function (data){
+  console.log('goiaba', data)
   return knex('users').insert({ ...data }, 'id')
 }
 
