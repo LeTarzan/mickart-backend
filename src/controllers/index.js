@@ -6,7 +6,6 @@ const SellsController = require('./sells')
 const PaymentoController = require('./payment')
 const AddressController = require('./address')
 const RoleController = require('./role')
-console.log('Controllers')
 
 /*
   nessa pasta vão ficar os controllers, cada um dentro de sua respectiva pasta

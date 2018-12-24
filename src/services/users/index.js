@@ -1,6 +1,7 @@
 const knex = require('../../database')
 
 const { insertAddress } = require('../address')
+const { encryptPassword } = require('../password')
 
 const getUser = function(data) {
   console.log('data = ', data)
@@ -44,6 +45,9 @@ const insert = function (data){
 const insertUser = async function(data) {
   console.log('data = ', data)
   try {
+    if (!data.user.password) {
+      data.user.password = await encryptPassword('1234mudar')
+    }
     await insert(data.user)
     await insertAddress(data.adress)
     return true

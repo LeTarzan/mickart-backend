@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
+
+const AddressController = require('./controllers/address')
 const UsersController = require('./controllers/users')
 const ProductsController = require('./controllers/products')
 const TypePaymentController = require('./controllers/typePayment')
@@ -14,6 +16,8 @@ const app = express()
 
 app.use(bodyParser.json())
 app.use(morgan('dev'))
+
+app.use('/address', AddressController)
 
 app.use('/users', UsersController)
 
