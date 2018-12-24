@@ -4,6 +4,8 @@ const TypePaymentController = require('./typePayment')
 const ListController = require('./list')
 const SellsController = require('./sells')
 const PaymentoController = require('./payment')
+const AddressController = require('./address')
+const RoleController = require('./role')
 console.log('Controllers')
 
 /*
@@ -25,3 +27,5 @@ exports.TypePaymentController = TypePaymentController
 exports.ListController = ListController
 exports.SellsController = SellsController
 exports.PaymentoController = PaymentoController
+exports.AddressController = AddressController
+exports.RoleController = RoleController

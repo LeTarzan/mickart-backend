@@ -6,11 +6,11 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       const password = '123qwe123'
       return knex('users').insert([
-        { email: 'jorge@gmail.com', password, name: 'jorge' },
-        { email: 'cleiton@gmail.com', password, name: 'cleiton' },
-        { email: 'jailson@gmail.com', password, name: 'jailson' },
-        { email: 'rafael@gmail.com', password, name: 'rafael' },
-        { email: 'nilson@gmail.com', password, name: 'nilson' }
+        { email: 'jorge@gmail.com', password, name: 'Jorge', lastname: 'Da Silva', username: 'jorginda12', comment: '' },
+        { email: 'cleiton@gmail.com', password, name: 'Cleiton', lastname: 'Cardoso', username: 'cleitinho', comment: '' },
+        { email: 'jailson@gmail.com', password, name: 'Jailson', lastname: 'Mendes', username: 'ursopeludo', comment: '' },
+        { email: 'rafael@gmail.com', password, name: 'Rafael', lastname: 'Sanches', username: 'fucazu', comment: '' },
+        { email: 'nilson@gmail.com', password, name: 'Nilson', lastname: 'Da Silva', username: 'aeroportodemosquito', comment: '' }
       ])
     })
 }

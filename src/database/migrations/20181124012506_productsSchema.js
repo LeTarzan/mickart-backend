@@ -4,7 +4,7 @@ exports.up = function(knex) {
       return knex.schema
         .createTable('products', table => {
           table.increments('id').primary()
-          table.string('name_prod')
+          table.string('name')
           table.integer('qtd_stored')
           table.string('color')
           table.decimal('value')

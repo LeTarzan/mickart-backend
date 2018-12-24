@@ -5,15 +5,30 @@ const {
   insertUser,
   updateUser,
   getUser,
-  deleteUser
+  deleteUser,
+  getUserProfile
 } = require('../../services')
 
 const router = express.Router()
 
+router.get('/full/:id', async (req, res) => {
+  try {
+    console.log('rota raiz do Users')
+    let result = await getUserProfile(req.params)
+    res.json({ msg: 'Rota do Users', data: result })
+  } catch (error) {
+    console.log('error ..', error)
+  }
+})
+
 router.get('/', async (req, res) => {
-  console.log('rota raiz do Users')
-  let result = await getAllUsers()
-  res.json({ msg: 'Rota do Users', data: result })
+  try {
+    console.log('rota raiz do Users')
+    let result = await getAllUsers()
+    res.json({ msg: 'Rota do Users', data: result })
+  } catch (error) {
+    console.log('error ..', error)
+  }
 })
 
 router.get('/:id', async (req, res) => {

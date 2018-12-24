@@ -6,6 +6,7 @@ const ProductsController = require('./controllers/products')
 const TypePaymentController = require('./controllers/typePayment')
 const ListController = require('./controllers/list')
 const SellsController = require('./controllers/sells')
+const RoleController = require('./controllers/role')
 
 require('./database')
 
@@ -24,7 +25,7 @@ app.use('/list', ListController)
 
 app.use('/sells', SellsController)
 
-// app.user('/sells')
+app.use('/role', RoleController)
 
 app.get('/', (req, res) => {
   res.json({ msg: 'Bem-vindo!' })

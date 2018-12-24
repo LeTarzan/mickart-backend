@@ -3,7 +3,8 @@ const {
   getUser,
   insertUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  getUserProfile
 } = require('./users')
 
 const {
@@ -46,6 +47,22 @@ const {
   deletePayment
 } = require('./payment')
 
+const {
+  getAddress,
+  getAllAddress,
+  insertAddress,
+  updateAddress,
+  deleteAddress
+} = require('./address')
+
+const {
+  getRole,
+  getAllRole,
+  insertRole,
+  updateRole,
+  deleteRole
+} = require('./role')
+
 console.log('Services')
 
 /*
@@ -65,6 +82,7 @@ exports.insertUser = insertUser
 exports.updateUser = updateUser
 exports.getUser = getUser
 exports.deleteUser = deleteUser
+exports.getUserProfile = getUserProfile
 
 exports.getAllProducts = getAllProducts
 exports.getProduct = getProduct
@@ -89,3 +107,15 @@ exports.getPayment = getPayment
 exports.insertPayment = insertPayment
 exports.updatePayment = updatePayment
 exports.deletePayment = deletePayment
+
+exports.getAddress = getAddress
+exports.getAllAddress = getAllAddress
+exports.insertAddress = insertAddress
+exports.updateAddress = updateAddress
+exports.deleteAddress = deleteAddress
+
+exports.getRole = getRole
+exports.getAllRole = getAllRole
+exports.insertRole = insertRole
+exports.updateRole = updateRole
+exports.deleteRole = deleteRole
