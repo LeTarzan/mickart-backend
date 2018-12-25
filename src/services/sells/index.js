@@ -36,7 +36,7 @@ const getAllSells = function () {
   FROM users u
     INNER JOIN sells s ON s.user_id = u.id
   WHERE u.status = true
-  `)
+  `).then(result => result.rows)
 }
 
 const getSell = function (data) {
