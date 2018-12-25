@@ -10,6 +10,6 @@ exports.seed = function(knex, Promise) {
         { qtd: 1, note: '', amount: 39.99, color: 'Amarelo', product_id: 3, sell_id: 3 },
         { qtd: 1, note: '', amount: 29.99, color: 'Rosa', product_id: 2, sell_id: 4 },
         { qtd: 1, note: '', amount: 25.99, color: 'Verde', product_id: 1, sell_id: 5 }
-      ])
+      ]).then(() => knex.raw("select setval('list_id_seq', (select max(id) from list));"))
     })
 }

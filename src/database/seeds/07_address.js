@@ -10,6 +10,6 @@ exports.seed = function (knex, Promise) {
         { address: 'Rua Das Dores', city: 'Barueri', district: 'Centro', number: 23, zipcode: 12334123, complement: '', user_id: 3 },
         { address: 'Rua Cabeça', city: 'São Paulo', district: 'Vila Leopoldina', number: 6754, zipcode: 12323123, complement: '', user_id: 4 },
         { address: 'Rua Lampada', city: 'Osasco', district: 'Pq. Industrial', number: 43434, zipcode: 12312123, complement: '', user_id: 5 }
-      ])
+      ]).then(() => knex.raw("select setval('address_id_seq', (select max(id) from address));"))
     })
 }

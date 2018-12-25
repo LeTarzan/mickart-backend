@@ -34,6 +34,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     console.log('rota raiz do Sells')
+    console.log('req.body ', req.body)
     let result = await insertSell(req.body)
     res.json({ msg: 'Rota de Sells', data: result })
   } catch (error) {
