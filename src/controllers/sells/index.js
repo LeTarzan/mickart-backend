@@ -8,8 +8,19 @@ const {
   getSell,
   insertSell,
   updateSell,
-  deleteSell
+  deleteSell,
+  getSellDateRecent
 } = require('../../services')
+
+router.get('/dates/', async (req, res) => {
+  try {
+    console.log('rota raiz de Sell')
+    let result = await getSellDateRecent()
+    res.json({ msg: 'Rota de Sells', data: result })
+  } catch (error) {
+    console.log('error ...', error)
+  }
+})
 
 router.get('/', async (req, res) => {
   try {

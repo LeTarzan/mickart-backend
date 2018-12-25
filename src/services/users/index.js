@@ -35,7 +35,7 @@ const getUserProfile = function(data) {
   FROM users as u
   LEFT JOIN address as a ON u.id = a.user_id
   LEFT JOIN role as r ON r.id = u.role_id
-  WHERE u.id = ${data.id} AND u.status <> false`).then(result => result.rows)
+  WHERE u.id = ${data.id} AND u.status = true`).then(result => result.rows)
 }
 
 const insert = function (data){
