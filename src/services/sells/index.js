@@ -34,9 +34,16 @@ const getAllSells = function () {
     s.date_delivery,
     s.user_id,
     s.created_at,
-    s.updated_at
+    s.updated_at,
+    p.id as p_id,
+    p.sell_id,
+    p.type_payment_id,
+    tp.id as tp_id,
+    tp.type
   FROM users u
     INNER JOIN sells s ON s.user_id = u.id
+    INNER JOIN payments p ON p.sell_id = s.id
+    INNER JOIN type_payment tp ON tp.id = p.type_payment_id
   WHERE u.status = true
   `).then(result => result.rows)
 }
