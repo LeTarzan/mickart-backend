@@ -9,8 +9,34 @@ const {
   updatePayment
 } = require('../payment')
 
+const getNextDateDeliveries = function (data) {
+  return knex.raw(`
+  SELECT
+    u.id,
+    u.name,
+    u.lastname,
+    s.id as s_id,
+    s.user_id,
+    s.date_delivery
+  FROM users u
+    INNER JOIN sells s ON u.id = s.user_id
+    WHERE u.status = true
+    ORDER BY date_delivery DESC LIMIT 10`).then(result => result.rows)
+}
+
 const getAllSells = function () {
-  return knex('sells').whereNot('status', false)
+  return knex.raw(`
+  SELECT
+    u.id,
+    u.name,
+    s.id as sell_id,
+    s.amount,
+    s.date_delivery,
+    s.user_id
+  FROM users u
+    INNER JOIN sells s ON s.user_id = u.id
+  WHERE u.status = true
+  `)
 }
 
 const getSell = function (data) {
@@ -40,7 +66,7 @@ const getSell = function (data) {
     LEFT JOIN payments as p on p.sell_id = s.id
     LEFT JOIN type_payment as tp on tp.id = p.type_payment_id
     LEFT JOIN products as pd on pd.id = l.product_id
-    WHERE u.status <> false and u.id = ${data.id}
+    WHERE u.status = true and u.id = ${data.id}
   `
   if (data.sellId) {
     query = `${query} AND WHERE s.id = ${data.sellId}`
@@ -108,4 +134,4 @@ exports.getSell = getSell
 exports.insertSell = insertSell
 exports.updateSell = updateSell
 exports.deleteSell = deleteSell
-// add sz in product
+exports.getNextDateDeliveries = getNextDateDeliveries
