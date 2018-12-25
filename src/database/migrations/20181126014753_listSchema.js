@@ -7,6 +7,7 @@ exports.up = function(knex) {
           table.integer('qtd')
           table.decimal('amount')
           table.string('color')
+          table.string('note')
           table.timestamps(true, true)
           table.boolean('status').defaultTo(true)
           table.datetime('deactivated_at')
