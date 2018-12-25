@@ -32,7 +32,9 @@ const getAllSells = function () {
     s.id as sell_id,
     s.amount,
     s.date_delivery,
-    s.user_id
+    s.user_id,
+    s.created_at,
+    s.updated_at
   FROM users u
     INNER JOIN sells s ON s.user_id = u.id
   WHERE u.status = true
