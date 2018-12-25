@@ -27,9 +27,9 @@ const getNextDateDeliveries = function (data) {
 const getAllSells = function () {
   return knex.raw(`
   SELECT
-    u.id,
+    u.id as user_id,
     u.name,
-    s.id as sell_id,
+    s.id,
     s.amount,
     s.date_delivery,
     s.user_id,
