@@ -51,8 +51,8 @@ const insertUser = async function(data) {
     if (!data.user.password) {
       data.user.password = await encryptPassword('1234mudar')
     }
-    await insert(data.user)
-    await insertAddress(data.adress)
+    let userId = await insert(data.user)
+    await insertAddress({ ...data.address, user_id: userId[0] })
     return true
   } catch (error) {
     console.log('error insertUser...', error)
