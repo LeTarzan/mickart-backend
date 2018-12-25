@@ -9,7 +9,7 @@ const {
   updatePayment
 } = require('../payment')
 
-const getSellDateRecent = function (data) {
+const getNextDateDeliveries = function (data) {
   return knex.raw(`
   SELECT
     u.id,
@@ -25,7 +25,18 @@ const getSellDateRecent = function (data) {
 }
 
 const getAllSells = function () {
-  return knex('sells').whereNot('status', false)
+  return knex.raw(`
+  SELECT
+    u.id,
+    u.name,
+    s.id as sell_id,
+    s.amount,
+    s.date_delivery,
+    s.user_id
+  FROM users u
+    INNER JOIN sells s ON s.user_id = u.id
+  WHERE u.status = true
+  `)
 }
 
 const getSell = function (data) {
@@ -123,4 +134,4 @@ exports.getSell = getSell
 exports.insertSell = insertSell
 exports.updateSell = updateSell
 exports.deleteSell = deleteSell
-exports.getSellDateRecent = getSellDateRecent
+exports.getNextDateDeliveries = getNextDateDeliveries

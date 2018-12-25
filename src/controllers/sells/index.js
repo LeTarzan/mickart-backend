@@ -9,13 +9,13 @@ const {
   insertSell,
   updateSell,
   deleteSell,
-  getSellDateRecent
+  getNextDateDeliveries
 } = require('../../services')
 
-router.get('/dates/', async (req, res) => {
+router.get('/next-deliveries', async (req, res) => {
   try {
     console.log('rota raiz de Sell')
-    let result = await getSellDateRecent()
+    let result = await getNextDateDeliveries()
     res.json({ msg: 'Rota de Sells', data: result })
   } catch (error) {
     console.log('error ...', error)
@@ -23,7 +23,7 @@ router.get('/dates/', async (req, res) => {
 })
 
 router.get('/', async (req, res) => {
-  try {
+  try { //id, nome
     console.log('rota raiz do Sells')
     let result = await getAllSells()
     res.json({ msg: 'Rota de Sells', data: result })

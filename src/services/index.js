@@ -37,7 +37,7 @@ const {
   insertSell,
   updateSell,
   deleteSell,
-  getSellDateRecent
+  getNextDateDeliveries
 } = require('./sells')
 
 const {
@@ -96,7 +96,7 @@ exports.getList = getList
 exports.insertList = insertList
 exports.updateList = updateList
 exports.deleteList = deleteList
-exports.getSellDateRecent = getSellDateRecent
+exports.getNextDateDeliveries = getNextDateDeliveries
 
 exports.getAllSells = getAllSells
 exports.getSell = getSell
