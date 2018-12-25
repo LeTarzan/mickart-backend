@@ -17,19 +17,19 @@ const app = express()
 app.use(bodyParser.json())
 app.use(morgan('dev'))
 
-app.use('/address', AddressController)
+app.use('/addresses', AddressController)
 
 app.use('/users', UsersController)
 
 app.use('/products', ProductsController)
 
-app.use('/type-payment', TypePaymentController)
+app.use('/type-payments', TypePaymentController)
 
-app.use('/list', ListController)
+app.use('/lists', ListController)
 
 app.use('/sells', SellsController)
 
-app.use('/role', RoleController)
+app.use('/roles', RoleController)
 
 app.get('/', (req, res) => {
   res.json({ msg: 'Bem-vindo!' })
