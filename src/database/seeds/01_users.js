@@ -1,10 +1,12 @@
+const { encryptPassword } = require('../../services/password')
+
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('users')
     .del()
-    .then(function() {
+    .then(async function() {
       // Inserts seed entries
-      const password = '123qwe123'
+      const password = await encryptPassword('123qwe123')
       return knex('users').insert([
         { email: 'jorge@gmail.com', password, name: 'Jorge', lastname: 'Da Silva', username: 'jorginda12', comment: '' },
         { email: 'cleiton@gmail.com', password, name: 'Cleiton', lastname: 'Cardoso', username: 'cleitinho', comment: '' },

@@ -11,6 +11,20 @@ const getUser = function(data) {
     .whereNot('status', false)
 }
 
+const getUserByUsername = function(data) {
+  console.log('data = ', data)
+  return knex.raw(`
+  SELECT
+    u.id,
+    u.username,
+    u.password,
+    u.email,
+    u.name
+    FROM users u
+    WHERE u.username = '${data.username}'
+  `).then(result => result.rows)
+}
+
 const getUserProfile = function(data) {
   console.log('data = ', data)
   return knex.raw(`
@@ -85,3 +99,4 @@ exports.insertUser = insertUser
 exports.updateUser = updateUser
 exports.deleteUser = deleteUser
 exports.getUserProfile = getUserProfile
+exports.getUserByUsername = getUserByUsername

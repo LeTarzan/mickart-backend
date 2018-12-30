@@ -4,7 +4,8 @@ const {
   insertUser,
   updateUser,
   deleteUser,
-  getUserProfile
+  getUserProfile,
+  getUserByUsername
 } = require('./users')
 
 const {
@@ -84,6 +85,7 @@ exports.updateUser = updateUser
 exports.getUser = getUser
 exports.deleteUser = deleteUser
 exports.getUserProfile = getUserProfile
+exports.getUserByUsername = getUserByUsername
 
 exports.getAllProducts = getAllProducts
 exports.getProduct = getProduct
