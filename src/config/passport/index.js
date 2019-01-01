@@ -17,7 +17,7 @@ passport.use(new LocalStrategy(async function (username, password, done) {
     if (!comparePassword(password, result.password)) {
       return done(null, false, { message: 'Password incorreta.' })
     }
-    const { password, ...userNoPassword } = result
+    const { password: passwordDB, ...userNoPassword } = result
     return done(null, userNoPassword)
 
   } catch (error) {
