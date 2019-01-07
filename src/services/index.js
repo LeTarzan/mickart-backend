@@ -65,6 +65,11 @@ const {
   deleteRole
 } = require('./role')
 
+const {
+  generateToken,
+  verifyToken
+} = require('./token')
+
 console.log('Services')
 
 /*
@@ -123,3 +128,6 @@ exports.getAllRole = getAllRole
 exports.insertRole = insertRole
 exports.updateRole = updateRole
 exports.deleteRole = deleteRole
+
+exports.generateToken = generateToken
+exports.verifyToken = verifyToken

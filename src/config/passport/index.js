@@ -6,7 +6,6 @@ const { getUserByUsername } = require('../../services/users')
 const { comparePassword } = require('../../services/password')
 
 passport.use(new LocalStrategy(async function (username, password, done) {
-  console.log('resultado 1..', username, password)
   try {
     let result = await getUserByUsername({ username })
     result = result[0]

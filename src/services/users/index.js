@@ -19,8 +19,12 @@ const getUserByUsername = function(data) {
     u.username,
     u.password,
     u.email,
-    u.name
+    u.name,
+    u.role_id,
+    r.type,
+    r.id as rid
     FROM users u
+    INNER JOIN role as r ON u.role_id = r.id
     WHERE u.username = '${data.username}'
   `).then(result => result.rows)
 }
