@@ -51,7 +51,6 @@ app.post('/login', requireSignIn, async (req, res) => {
   console.log('req login...', req.user)
   const { id, username, rid } = req.user
   let token = await generateToken(id, username)
-  token = token.token
   res.status(200).json({ msg: 'acertô mizeravi', token, id, rid })
 })
 

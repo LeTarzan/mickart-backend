@@ -3,10 +3,11 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const { ExtractJwt, Strategy: JwtStrategy } = require('passport-jwt')
 
-const { getUserByUsername } = require('../../services/users')
+const { getUserByUsername, getUser } = require('../../services/users')
 const { comparePassword } = require('../../services/password')
+const { verifyToken } = require('../../services/token')
 
-const secret = 'aqui digita qualquer coisa... !@#$!#!@#!'
+const secret = 'salt'
 
 passport.use(new LocalStrategy(async function (username, password, done) {
   try {
@@ -34,7 +35,7 @@ const jwtOptions = {
 
 passport.use(new JwtStrategy(jwtOptions, async (payload, done) => {
   try {
-    let user = await // aqui coloca o serviço para lista os dados do usuário
+    let user = await getUser(payload) // aqui coloca o serviço para lista os dados do usuário
     console.log('passport.use user = ', user)
     if (!user) {
       return done(null, false)

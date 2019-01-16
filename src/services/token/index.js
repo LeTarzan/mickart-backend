@@ -17,7 +17,7 @@ const generateToken = async function(id, username) {
       return { msg: 'Dados incorretos' }
     }
     const token = await jwt.encode({ id, username }, secret)
-    return { token }
+    return token
   } catch (error) {
     console.log('erro.. ', error)
     throw error

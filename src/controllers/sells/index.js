@@ -2,6 +2,8 @@
 /* eslint-disable camelcase */
 const express = require('express')
 const router = express.Router()
+const { requireAuth } = require('../../services/auth')
+const { getRole } = require('../../services/role')
 
 const {
   getAllSells,
@@ -22,19 +24,25 @@ router.get('/next-deliveries', async (req, res) => {
   }
 })
 
-router.get('/', async (req, res) => {
-  try { //id, nome
+router.get('/', requireAuth, async (req, res) => {
+  try {
     console.log('rota raiz do Sells')
-    let result = await getAllSells()
-    res.json({ msg: 'Rota de Sells', data: result })
+    let typeRole = getRole(req.id)
+    let result
+    if (typeRole === 1) {
+      result = await getAllSells()
+      return res.json({ msg: 'Rota de Sells', data: result })
+    }
+    result = await getSell(req.id)
+    return res.json({ msg: 'Rota de Sells', data: result })
   } catch (error) {
     console.log('error ', error)
   }
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', requireAuth, async (req, res) => {
   try {
-    console.log('rota raiz do Sells')
+    console.log('rota raiz do Sells', req)
     let result = await getSell(req.params)
     res.json({ msg: 'Rota de Sells', data: result })
   } catch (error) {
