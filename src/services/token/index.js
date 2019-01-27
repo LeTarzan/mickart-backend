@@ -1,5 +1,5 @@
 const jwt = require('jwt-simple')
-const secret = '123qwe123'
+const secret = 'shake it bololo'
 
 const verifyToken = async function(token) {
   try {

@@ -8,13 +8,14 @@ const {
   deleteUser,
   getUserProfile
 } = require('../../services')
+const { requireAuth } = require('../../services/auth')
 
 const router = express.Router()
 
-router.get('/full/:id', async (req, res) => {
+router.get('/full/', requireAuth, async (req, res) => {
   try {
     console.log('rota raiz do Users')
-    let result = await getUserProfile(req.params)
+    let result = await getUserProfile(req.user[0])
     res.json({ msg: 'Rota do Users', data: result })
   } catch (error) {
     console.log('error ..', error)
@@ -57,13 +58,14 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.put('/', async (req, res) => {
+router.put('/', requireAuth, async (req, res) => {
   console.log('req', req.body)
   try {
     let result = await updateUser(req.body)
     res.json({ msg: 'Rota do Users', data: result })
   } catch (error) {
     console.log('error ', error)
+    res.status(400).json({ msg: 'Erro ao atualizar', data: false })
   }
 })
 

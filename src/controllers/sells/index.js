@@ -27,13 +27,13 @@ router.get('/next-deliveries', async (req, res) => {
 router.get('/', requireAuth, async (req, res) => {
   try {
     console.log('rota raiz do Sells')
-    let typeRole = getRole(req.id)
+    let typeRole = getRole(JSON.stringify({ id: req.id }))
     let result
     if (typeRole === 1) {
       result = await getAllSells()
       return res.json({ msg: 'Rota de Sells', data: result })
     }
-    result = await getSell(req.id)
+    result = await getSell(req.user[0])
     return res.json({ msg: 'Rota de Sells', data: result })
   } catch (error) {
     console.log('error ', error)

@@ -56,6 +56,7 @@ const getSell = function (data) {
         s.user_id,
         s.amount,
         s.date_delivery,
+        s.created_at,
         p.id as p_id,
         p.sell_id as p_sell_id,
         p.type_payment_id,

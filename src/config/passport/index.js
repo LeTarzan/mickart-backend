@@ -7,13 +7,12 @@ const { getUserByUsername, getUser } = require('../../services/users')
 const { comparePassword } = require('../../services/password')
 const { verifyToken } = require('../../services/token')
 
-const secret = 'salt'
+const secret = 'shake it bololo'
 
 passport.use(new LocalStrategy(async function (username, password, done) {
   try {
     let result = await getUserByUsername({ username })
     result = result[0]
-    console.log('resultado 2..', result)
     if (!result.username) {
       return done(null, false, { message: 'Username incorreta.' })
     }
@@ -35,8 +34,7 @@ const jwtOptions = {
 
 passport.use(new JwtStrategy(jwtOptions, async (payload, done) => {
   try {
-    let user = await getUser(payload) // aqui coloca o serviço para lista os dados do usuário
-    console.log('passport.use user = ', user)
+    let user = await getUser(payload)
     if (!user) {
       return done(null, false)
     }

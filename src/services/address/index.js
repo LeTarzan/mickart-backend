@@ -16,6 +16,7 @@ const insertAddress = function (data) {
 }
 
 const updateAddress = function (data) {
+  console.log('data address', data)
   return knex('address')
     .update(data)
     .where('user_id', data.id)

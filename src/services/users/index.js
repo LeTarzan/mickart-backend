@@ -2,6 +2,7 @@ const knex = require('../../database')
 
 const { insertAddress } = require('../address')
 const { encryptPassword } = require('../password')
+const { updateAddress } = require('../../services/address')
 
 const getUser = function(data) {
   console.log('data = ', data)
@@ -78,11 +79,22 @@ const insertUser = async function(data) {
   }
 }
 
-const updateUser = function(data) {
-  console.log('data = ', data)
+const update = function(data){
   return knex('users')
-    .update({ data })
+    .update( data )
     .where('id', data.id)
+}
+
+const updateUser = async function(data) {
+  try {
+    console.log('data = ', data)
+    await update(data.user)
+    await updateAddress(data.address)
+    return true
+  } catch (error) {
+    console.log('error..', error)
+    throw error
+  }
 }
 
 const deleteUser = function(data) {
