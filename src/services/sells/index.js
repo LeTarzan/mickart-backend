@@ -57,6 +57,7 @@ const getSell = function (data) {
         s.amount,
         s.date_delivery,
         s.created_at,
+        s.status,
         p.id as p_id,
         p.sell_id as p_sell_id,
         p.type_payment_id,
