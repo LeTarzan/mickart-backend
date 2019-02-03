@@ -7,6 +7,7 @@ const PaymentoController = require('./payment')
 const AddressController = require('./address')
 const RoleController = require('./role')
 const TokenController = require('./token')
+const PasswordController = require('./password')
 
 /*
   nessa pasta vão ficar os controllers, cada um dentro de sua respectiva pasta
@@ -30,3 +31,4 @@ exports.PaymentoController = PaymentoController
 exports.AddressController = AddressController
 exports.RoleController = RoleController
 exports.TokenController = TokenController
+exports.PasswordController = PasswordController

@@ -1,7 +1,7 @@
 const knex = require('../../database')
 
 const { insertAddress } = require('../address')
-const { encryptPassword } = require('../password')
+const { encryptPassword, comparePassword } = require('../password')
 const { updateAddress } = require('../../services/address')
 
 const getUser = function(data) {
@@ -10,6 +10,24 @@ const getUser = function(data) {
     .select()
     .where('id', data.id)
     .whereNot('status', false)
+}
+
+const getUserByEmail = function(data) {
+  try {
+    console.log('data = ', data)
+    return knex.raw(`
+    SELECT
+     u.id,
+     u.name,
+     u.lastname,
+     u.email
+    FROM users as u
+    WHERE u.email = '${data.email}'
+    `).then(result => result.rows)
+  } catch (error) {
+    console.log('error ..', error)
+    throw error
+  }
 }
 
 const getUserByUsername = function(data) {
@@ -39,6 +57,7 @@ const getUserProfile = function(data) {
   u.name,
   u.lastname,
   u.username,
+  u.password,
   u.comment,
   u.role_id,
   a.id as a_id,
@@ -68,7 +87,7 @@ const insertUser = async function(data) {
   console.log('data = ', data)
   try {
     if (!data.user.password) {
-      data.user.password = await encryptPassword('1234mudar')
+      data.user.password = await encryptPassword('123qwe123')
     }
     let userId = await insert(data.user)
     await insertAddress({ ...data.address, user_id: userId[0] })
@@ -80,14 +99,38 @@ const insertUser = async function(data) {
 }
 
 const update = function(data){
+  console.log('data 2', data)
   return knex('users')
     .update( data )
     .where('id', data.id)
 }
 
+const verifyPassword = async function(data){
+  try {
+    console.log('password data', data)
+    const dataUser = await getUserProfile(data)
+    console.log('password usercrypt', dataUser)
+    if(!comparePassword(data.currentPassword, dataUser[0].password)){
+      return false
+    }
+    const newPasswordCrypt = encryptPassword(data.newPassword)
+    return newPasswordCrypt
+  } catch (error) {
+    console.log('error verifyPassword', error)
+    throw error
+  }
+}
+
 const updateUser = async function(data) {
   try {
-    console.log('data = ', data)
+    let password
+    if(data.password.newPassword){
+      password = await verifyPassword(data.password)
+      if(!password){
+        return 'Senha atual inválida'
+      }
+      data.user.password = password
+    }
     await update(data.user)
     await updateAddress(data.address)
     return true
@@ -116,3 +159,4 @@ exports.updateUser = updateUser
 exports.deleteUser = deleteUser
 exports.getUserProfile = getUserProfile
 exports.getUserByUsername = getUserByUsername
+exports.getUserByEmail = getUserByEmail

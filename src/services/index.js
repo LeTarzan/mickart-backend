@@ -5,7 +5,8 @@ const {
   updateUser,
   deleteUser,
   getUserProfile,
-  getUserByUsername
+  getUserByUsername,
+  getUserByEmail
 } = require('./users')
 
 const {
@@ -70,6 +71,14 @@ const {
   verifyToken
 } = require('./token')
 
+const {
+  restorePassword
+} = require('./password')
+
+const {
+  sendEmail
+} = require('./emails')
+
 console.log('Services')
 
 /*
@@ -91,6 +100,7 @@ exports.getUser = getUser
 exports.deleteUser = deleteUser
 exports.getUserProfile = getUserProfile
 exports.getUserByUsername = getUserByUsername
+exports.getUserByEmail = getUserByEmail
 
 exports.getAllProducts = getAllProducts
 exports.getProduct = getProduct
@@ -131,3 +141,7 @@ exports.deleteRole = deleteRole
 
 exports.generateToken = generateToken
 exports.verifyToken = verifyToken
+
+exports.restorePassword = restorePassword
+
+exports.sendEmail = sendEmail

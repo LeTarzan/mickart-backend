@@ -11,6 +11,7 @@ const ListController = require('./controllers/list')
 const SellsController = require('./controllers/sells')
 const RoleController = require('./controllers/role')
 const TokenController = require('./controllers/token')
+const PasswordController = require('./controllers/password')
 const { requireSignIn } = require('./services/auth')
 const { generateToken } = require('./services/token')
 
@@ -42,6 +43,8 @@ app.use('/sells', SellsController)
 app.use('/roles', RoleController)
 
 app.use('/token', TokenController)
+
+app.use('/password', PasswordController)
 
 app.get('/', (req, res) => {
   res.json({ msg: 'Bem-vindo!' })
