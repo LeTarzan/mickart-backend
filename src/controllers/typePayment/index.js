@@ -8,7 +8,7 @@ const {
   insertTypeOfPayment,
   updateTypeOfPayment,
   deleteTypeOfPayment
-} = require('../../services')
+} = require('../../services/typePayment')
 
 router.get('/', async (req, res) => {
   try {

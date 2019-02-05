@@ -6,7 +6,7 @@ const {
   insertProduct,
   updateProduct,
   deleteProduct
-} = require('../../services')
+} = require('../../services/products')
 
 const express = require('express')
 

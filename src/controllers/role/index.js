@@ -8,7 +8,7 @@ const {
   insertRole,
   updateRole,
   deleteRole
-} = require('../../services')
+} = require('../../services/role')
 
 router.get('/', async (req, res) => {
   try {

@@ -2,7 +2,7 @@ const express = require('express')
 /* eslint-disable prettier/prettier */
 const router = express.Router()
 
-const { verifyToken, generateToken } = require('../../services')
+const { verifyToken, generateToken } = require('../../services/token')
 
 router.post('/verify-token', async (req, res) => {
   console.log('token...', req.body.token)

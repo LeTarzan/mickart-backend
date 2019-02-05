@@ -1,9 +1,8 @@
 const knex = require('../../database')
 
-const { insertAddress } = require('../address')
+const { insertAddress, updateAddress } = require('../address')
 const { encryptPassword, comparePassword } = require('../password')
-const { updateAddress } = require('../../services/address')
-
+console.log('insertAddress ', insertAddress)
 const getUser = function(data) {
   console.log('data = ', data)
   return knex('users')
@@ -13,9 +12,8 @@ const getUser = function(data) {
 }
 
 const getUserByEmail = function(data) {
-  try {
-    console.log('data = ', data)
-    return knex.raw(`
+  console.log('data = ', data)
+  return knex.raw(`
     SELECT
      u.id,
      u.name,
@@ -23,11 +21,7 @@ const getUserByEmail = function(data) {
      u.email
     FROM users as u
     WHERE u.email = '${data.email}'
-    `).then(result => result.rows)
-  } catch (error) {
-    console.log('error ..', error)
-    throw error
-  }
+  `).then(result => result.rows)
 }
 
 const getUserByUsername = function(data) {
@@ -149,7 +143,7 @@ const deleteUser = function(data) {
 const getAllUsers = function() {
   return knex('users').whereNot('status', false)
 }
-
+console.log('getUserByEmail', getUserByEmail)
 exports.getAllUsers = getAllUsers
 exports.getUser = getUser
 exports.insertUser = insertUser

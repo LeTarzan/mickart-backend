@@ -6,7 +6,7 @@ const {
   insertList,
   updateList,
   deleteList
-} = require('../../services')
+} = require('../../services/list')
 
 const express = require('express')
 

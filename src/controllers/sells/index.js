@@ -12,7 +12,7 @@ const {
   updateSell,
   deleteSell,
   getNextDateDeliveries
-} = require('../../services')
+} = require('../../services/sells')
 
 router.get('/next-deliveries', async (req, res) => {
   try {

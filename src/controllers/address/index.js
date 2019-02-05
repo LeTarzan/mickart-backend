@@ -6,7 +6,7 @@ const {
   insertAddress,
   updateAddress,
   deleteAddress
-} = require('../../services')
+} = require('../../services/address')
 
 const express = require('express')
 

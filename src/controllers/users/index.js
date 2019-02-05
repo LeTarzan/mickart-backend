@@ -7,7 +7,7 @@ const {
   getUser,
   deleteUser,
   getUserProfile
-} = require('../../services')
+} = require('../../services/users')
 const { requireAuth } = require('../../services/auth')
 
 const router = express.Router()
