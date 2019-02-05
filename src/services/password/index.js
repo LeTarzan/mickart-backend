@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt')
-const { getUserByEmail, updateUser } = require('../users')
+const { getUserByEmail, updateUser } = require('../../services/users')
 const { sendEmail } = require('../emails')
 
 const encryptPassword = (password) => bcrypt.hash(password, 10)
@@ -12,7 +12,6 @@ const restorePassword = async function (data) {
     if (dataUser) {
       let newPassword = await generatePassword()
       const newPasswordCrypt = await encryptPassword(newPassword)
-      // atualizar senha
       let text = 'Olá ' + dataUser.name + ' ' + dataUser.lastname + ', sua senha foi alterada, agora ela é: ' + newPassword + '.'
       let subject = 'Recuperação de senha - Mickarte'
       const result = await sendEmail(dataUser.email, subject, text)

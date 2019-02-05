@@ -107,9 +107,7 @@ const update = function(data){
 
 const verifyPassword = async function(data){
   try {
-    console.log('password data', data)
     const dataUser = await getUserProfile(data)
-    console.log('password usercrypt', dataUser)
     if(!comparePassword(data.currentPassword, dataUser[0].password)){
       return false
     }
