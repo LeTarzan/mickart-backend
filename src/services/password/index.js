@@ -8,6 +8,7 @@ const comparePassword = (password, dbPassword) => bcrypt.compareSync(password, d
 
 const restorePassword = async function (data) {
   try {
+    console.log('function.. ', getUserByEmail)
     const dataUser = await getUserByEmail(data)
     if (dataUser) {
       let newPassword = await generatePassword()
