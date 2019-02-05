@@ -4,7 +4,7 @@ const router = express.Router()
 const { restorePassword } = require('../../services/passwordRestore')
 
 router.post('/restore', async (req, res) => {
-  const data = await restorePassword(req)
+  const data = await restorePassword(req.body)
   if (data.result) {
     return res.status(200).json(data)
   }

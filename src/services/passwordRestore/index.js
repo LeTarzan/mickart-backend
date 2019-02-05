@@ -1,18 +1,11 @@
 const { sendEmail } = require('../emails')
-const { getUserByEmail, updateUser } = require('../users')
+const { getUserByEmail, updateUserPassword } = require('../users')
 const { encryptPassword } = require('../password')
-console.log('sendEmail ', sendEmail)
-try {
-  getUserByEmail('fucazu@gmail.com')
-} catch (error) {
-  console.log('error', error)
-}
 
 const restorePassword = async (data) => {
-  console.log('function.. ', updateUser)
-  console.log('function.. ', getUserByEmail)
   try {
-    const dataUser = await getUserByEmail(data)
+    let dataUser = await getUserByEmail(data)
+    dataUser = dataUser[0]
     if (dataUser) {
       let newPassword = await generatePassword()
       const newPasswordCrypt = await encryptPassword(newPassword)
@@ -23,7 +16,7 @@ const restorePassword = async (data) => {
         let data = {}
         data.id = dataUser.id
         data.password = newPasswordCrypt
-        let rs = await updateUser(data)
+        let rs = await updateUserPassword(data)
         if (rs) {
           return { result: true, msg: 'Mensagem enviada, confira seu email!' }
         }

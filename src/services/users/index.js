@@ -2,7 +2,7 @@ const knex = require('../../database')
 
 const { insertAddress, updateAddress } = require('../address')
 const { encryptPassword, comparePassword } = require('../password')
-console.log('insertAddress ', insertAddress)
+
 const getUser = function(data) {
   console.log('data = ', data)
   return knex('users')
@@ -143,7 +143,13 @@ const deleteUser = function(data) {
 const getAllUsers = function() {
   return knex('users').whereNot('status', false)
 }
-console.log('getUserByEmail', getUserByEmail)
+
+const updateUserPassword = function(data){
+  return knex('users')
+    .update( data )
+    .where('id', data.id)
+}
+
 exports.getAllUsers = getAllUsers
 exports.getUser = getUser
 exports.insertUser = insertUser
@@ -152,3 +158,4 @@ exports.deleteUser = deleteUser
 exports.getUserProfile = getUserProfile
 exports.getUserByUsername = getUserByUsername
 exports.getUserByEmail = getUserByEmail
+exports.updateUserPassword = updateUserPassword
