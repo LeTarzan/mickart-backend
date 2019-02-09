@@ -8,6 +8,8 @@ const {
   deleteProduct
 } = require('../../services/products')
 
+const { requireAuth } = require('../../services/auth')
+
 const express = require('express')
 
 const router = express.Router()
@@ -30,12 +32,13 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', requireAuth, async (req, res) => {
   try {
     let result = await insertProduct(req.body)
-    res.json({ msg: 'Rota de products', data: result })
+    res.status(200).json(result)
   } catch (error) {
     console.log('error', error)
+    return res.status(409).json(error)
   }
 })
 

@@ -15,8 +15,16 @@ const getProduct = function (data) {
 
 const insertProduct = function (data) {
   console.log('data = ', data)
-  return knex('products')
-    .insert(data)
+  try {
+    let result = knex('products').insert(data, 'id')
+    console.log('resultado..', result)
+    if (result) {
+      return { msg: 'Inserido com sucesso!', data: true }
+    }
+  } catch (error) {
+    console.log('Error..', error)
+    throw error
+  }
 }
 
 const updateProduct = function (data) {

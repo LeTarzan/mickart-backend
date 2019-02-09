@@ -6,11 +6,11 @@ const { verifyToken, generateToken } = require('../../services/token')
 
 router.post('/verify-token', async (req, res) => {
   console.log('token...', req.body.token)
-  let result = await verifyToken(req.body.token)
-  if (result) {
-    return res.status(200).json({ result })
+  let rs = await verifyToken(req.body.token)
+  if (rs.result) {
+    return res.status(200).json({ rs })
   }
-  return res.status(400).json({ result })
+  return res.status(400).json({ rs })
 })
 
 router.post('/generate-token', async (req, res) => {

@@ -1,13 +1,17 @@
 const jwt = require('jwt-simple')
 const secret = 'shake it bololo'
 
+const { getUser } = require('../users')
+
 const verifyToken = async function(token) {
   try {
     const decodeToken = jwt.decode(token, secret)
     console.log('token ..', decodeToken)
-    return true
+    let dataUser = await getUser(decodeToken)
+    console.log('roleid ', dataUser)
+    return { result: true, roleid: dataUser[0].role_id }
   } catch (error) {
-    return false
+    return { result: false }
   }
 }
 
