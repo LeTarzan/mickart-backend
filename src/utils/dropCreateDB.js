@@ -9,7 +9,7 @@ const configs = {
     port: process.env.SQL_PORT || 53502,
     user: process.env.SQL_USER || 'postgres',
     password: process.env.SQL_PASSWORD || 'root',
-    database: 'postgres'
+    database: process.env.SQL_DATABASE || 'postgres'
   },
   pool: { min: 1, max: 100 }
 }

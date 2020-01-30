@@ -16,14 +16,16 @@ const getProduct = function (data) {
 const insertProduct = function (data) {
   console.log('data = ', data)
   try {
-    let result = knex('products').insert(data, 'id')
-    console.log('resultado..', result)
-    if (result) {
-      return { msg: 'Inserido com sucesso!', data: true }
-    }
+    knex('products').insert(data, 'id').then(result => {
+      console.log('resultado..', result[0])
+      if (result[0]) {
+        return { msg: 'Inserido com sucesso!', data: true }
+      }
+      throw Error('Erro ao inserir')
+    })
   } catch (error) {
     console.log('Error..', error)
-    throw error
+    return error
   }
 }
 

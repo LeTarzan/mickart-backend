@@ -1,4 +1,4 @@
-const knex = require('../../database')
+  const knex = require('../../database')
 
 const { insertAddress, updateAddress } = require('../address')
 const { encryptPassword, comparePassword } = require('../password')
@@ -39,7 +39,7 @@ const getUserByUsername = function(data) {
     FROM users u
     INNER JOIN role as r ON u.role_id = r.id
     WHERE u.username = '${data.username}'
-  `).then(result => result.rows)
+  `).then(result => result.rows[0])
 }
 
 const getUserProfile = function(data) {

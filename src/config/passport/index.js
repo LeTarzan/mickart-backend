@@ -11,8 +11,9 @@ const secret = 'shake it bololo'
 
 passport.use(new LocalStrategy(async function (username, password, done) {
   try {
+    console.log('rsrsrs', username)
     let result = await getUserByUsername({ username })
-    result = result[0]
+    console.log('abbb', result)
     if (!result.username) {
       return done(null, false, { message: 'Username incorreta.' })
     }
