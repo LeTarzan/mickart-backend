@@ -10,24 +10,23 @@ const { verifyToken } = require('../../services/token')
 const secret = 'shake it bololo'
 
 passport.use(new LocalStrategy(async function (username, password, done) {
-  try {
-    console.log('rsrsrs', username)
-    let result = await getUserByUsername({ username })
-    console.log('abbb', result)
-    if (!result.username) {
-      return done(null, false, { message: 'Username incorreta.' })
-    }
-    if (!comparePassword(password, result.password)) {
-      return done(null, false, { message: 'Password incorreta.' })
-    }
-    const { password: passwordDB, ...userNoPassword } = result
-    return done(null, userNoPassword)
-
-  } catch (error) {
-    return done(error)
-  }
+  console.log('username: ', username)
+  await getUserByUsername({ username })
+  .then(result => {
+      if (typeof (result) === "undefined") {
+        console.log('rs 2', result)
+        return done(null, false, { message: 'Username incorreta.' })
+      }
+      if (!comparePassword(password, result.password)) {
+        return done(null, false, { message: 'Password incorreta.' })
+      }
+      const { password: passwordDB, ...userNoPassword } = result
+      return done(null, userNoPassword)
+    }).catch(err => {
+      console.log('error', err)
+    })
 }))
-
+  
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),
   secretOrKey: secret

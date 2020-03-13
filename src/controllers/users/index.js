@@ -18,7 +18,7 @@ router.get('/full/', requireAuth, async (req, res) => {
     let result = await getUserProfile(req.user[0])
     res.json({ msg: 'Rota do Users', data: result })
   } catch (error) {
-    console.log('error ..', error)
+    console.log('error ...', error)
   }
 })
 
