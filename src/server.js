@@ -53,6 +53,6 @@ app.post('/login', requireSignIn, async (req, res) => {
   res.status(200).json({ msg: 'acertô mizeravi', token, id, rid })
 })
 
-app.listen(3000, error => {
+app.listen(process.env.PORT || 3000, error => {
   error && console.log('error ', error)
 })
