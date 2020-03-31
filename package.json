@@ -45,6 +45,8 @@
     "start": "cross-env DEV=true node src/server.js",
     "lint": "eslint src --color",
     "build": "babel src --out-dir dist --ignore node_modules",
+    "heroku-prebuild": "",
+    "heroku-postbuild": "",
     "p": "prettier --write src/**/*.js",
     "p:w": "onchange ./src/**/*.js -- prettier --write {{changed}}",
     "test": "jest",
