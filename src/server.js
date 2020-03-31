@@ -22,11 +22,7 @@ const app = express()
 
 app.use(bodyParser.json())
 app.use(morgan('dev'))
-app.use(cors({
-  origin: [
-    'http://localhost:4000'
-  ]
-}))
+app.use(cors())
 
 app.use('/addresses', AddressController)
 
